@@ -37,21 +37,25 @@
 <script lang="ts">
 import { reactive, onMounted } from "vue";
 import { useWeatherStore } from "../stores/weather.store";
+import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from '@auth0/auth0-vue';
 import { useRoute, useRouter } from 'vue-router';
 
 export default {
   name: "HomeView",
   setup() {
-    const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
     const router = useRouter();
     const weatherStore = useWeatherStore();
+    const userStore = useUserStore();
     const state: any = reactive({
       displayResult: false,
       weather: weatherStore.getWeather,
     }); // TODO Fix typings
 
     const submit = async () => {
+      const token = await getAccessTokenSilently();
+      userStore.setToken(token);
       state.displayResult = true;
       await weatherStore.loadWeather();
     };
