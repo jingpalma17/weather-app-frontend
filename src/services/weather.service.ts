@@ -2,13 +2,15 @@ import axios from "axios";
 
 class WeatherService {
   private axios: any; // TODO Fix any
+  private token: any; // TODO Fix any
 
-  constructor(axios: any) {
+  constructor(axios: any, token) {
     // TODO Fix any
     this.axios = axios.create({
-      baseURL: "http://localhost:3001/api/weather", // TODO Fix route to be dynamic
+      baseURL: `${import.meta.env.VITE_AUDIENCE}weather`, // TODO Fix route to be dynamic
       responseType: "json",
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
@@ -18,4 +20,5 @@ class WeatherService {
     return this.axios.get();
   }
 }
-export default new WeatherService(axios);
+export default WeatherService;
+
