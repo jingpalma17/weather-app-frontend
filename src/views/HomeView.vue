@@ -1,9 +1,14 @@
 <template>
   <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6">
     <div v-if="!state.displayResult">
-      <h3>{{user.name}}</h3>
-      <p>{{user.email}}</p>
-      <input name="city" type="text" placeholder="city" />
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.email }}</p>
+      <input
+        name="city"
+        type="text"
+        class="peer border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-12"
+        placeholder="City"
+      />
       <button
         @click="submit"
         class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
@@ -26,11 +31,11 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td>{{state.weather.main.temp}}</td>
-            <td>{{state.weather.weather[0].description}}</td>
-            <td>{{state.weather.weather[0].main}}</td>
-            <td>{{state.weather.main.pressure}}</td>
-            <td>{{state.weather.main.humidity}}</td>
+            <td>{{ state.weather.main.temp }}</td>
+            <td>{{ state.weather.weather[0].description }}</td>
+            <td>{{ state.weather.weather[0].main }}</td>
+            <td>{{ state.weather.main.pressure }}</td>
+            <td>{{ state.weather.main.humidity }}</td>
           </tr>
         </tbody>
       </table>
@@ -47,8 +52,8 @@
 import { reactive, onMounted, computed } from "vue";
 import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
-import { useAuth0 } from '@auth0/auth0-vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useAuth0 } from "@auth0/auth0-vue";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
   name: "HomeView",
