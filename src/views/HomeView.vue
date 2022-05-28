@@ -7,6 +7,7 @@
       <button @click="submit">Display Weather</button>
     </div>
     <div v-else>
+    {{state.weather}}
       <table>
         <thead>
           <tr>
@@ -47,6 +48,7 @@ export default {
     const weatherStore = useWeatherStore();
     const state: any = reactive({
       displayResult: false,
+      weather: weatherStore.getWeather,
     }); // TODO Fix typings
 
     const submit = async () => {
