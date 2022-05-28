@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white shadow">
     <div class="flex mx-auto max-w-7xl px-4 py-6 sm:px-6 items-center">
-      <img src="/logo.png" style="height:50px" />
+      <img src="/logo.png" style="height: 50px" />
       <h1 class="text-3xl font-bold leading-tight text-gray-900">
         Weather Forecast
       </h1>

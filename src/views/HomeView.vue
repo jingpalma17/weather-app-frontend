@@ -31,7 +31,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{state.dateToday}}</td>
+            <td>{{ state.dateToday }}</td>
             <td>{{ state.weather.main.temp }}</td>
             <td>{{ state.weather.weather[0].description }}</td>
             <td>{{ state.weather.weather[0].main }}</td>
@@ -55,7 +55,7 @@ import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { useRoute, useRouter } from "vue-router";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 export default {
   name: "HomeView",
@@ -66,9 +66,9 @@ export default {
     const userStore = useUserStore();
     const state: any = reactive({
       displayResult: false,
-      city: '',
+      city: "",
       weather: computed(() => weatherStore.getWeather),
-      dateToday: format(new Date(), 'MM/dd/yyyy'),
+      dateToday: format(new Date(), "MM/dd/yyyy"),
     }); // TODO Fix typings
 
     const submit = async (city) => {
@@ -93,6 +93,4 @@ export default {
   },
 };
 </script>
-<style>
-
-</style>
+<style></style>
