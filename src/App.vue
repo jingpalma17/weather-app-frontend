@@ -1,21 +1,21 @@
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-    <h3 class="text-3xl font-bold underline">Weather Forecast</h3>
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1
+        @click="counter = 0"
+        class="text-3xl font-bold leading-tight text-gray-900"
+      >
+        Weather Forecast
+      </h1>
 
-    <div class="wrapper">
-      <nav>
-        <a @click="logout">Logout</a>
-      </nav>
+      <button
+        @click="logout"
+        class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
+      >
+        Logout
+      </button>
     </div>
   </header>
-
   <RouterView />
 </template>
 <script lang="ts">
