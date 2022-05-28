@@ -1,12 +1,10 @@
 FROM node:14.1-alpine AS builder
 
-ARG VITE_DOMAIN
-ARG VITE_CLIENT
-ARG VITE_REDIRECT
+# ARG VITE_DOMAIN
+# ARG VITE_CLIENT
+# ARG VITE_REDIRECT
 
-ENV VITE_DOMAIN $VITE_DOMAIN
-ENV VITE_CLIENT $VITE_CLIENT
-ENV VITE_REDIRECT $VITE_REDIRECT
+
 
 WORKDIR /opt/web
 COPY package.json package-lock.json ./
@@ -14,19 +12,16 @@ RUN npm cache verify
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH"
+#TODO Made this dynamic - Investigate issue with heroku
+ENV VITE_DOMAIN "jingpalma.us.auth0.com"
+ENV VITE_CLIENT "9iFbgE7VwJoibEvKHRn1BUKVibHqNtMF"
+ENV VITE_REDIRECT "https://jpalma-weather-app-frontend.herokuapp.com/dashboard/"
+ENV VITE_AUDIENCE "https://jpalma-weather-app-backend.herokuapp.com/api/"
 
 COPY . ./
 RUN npm run build
 
 FROM nginx:1.17-alpine
-
-ARG VITE_DOMAIN
-ARG VITE_CLIENT
-ARG VITE_REDIRECT
-
-ENV VITE_DOMAIN $VITE_DOMAIN
-ENV VITE_CLIENT $VITE_CLIENT
-ENV VITE_REDIRECT $VITE_REDIRECT
 
 RUN apk --no-cache add curl
 RUN curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-`uname -s`-`uname -m` -o envsubst && \
