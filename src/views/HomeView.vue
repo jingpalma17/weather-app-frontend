@@ -74,8 +74,8 @@ export default {
     const submit = async (city) => {
       const token = await getAccessTokenSilently();
       userStore.setToken(token);
-      state.displayResult = true;
       await weatherStore.loadWeather(city);
+      state.displayResult = true;
     };
 
     const goBack = () => {

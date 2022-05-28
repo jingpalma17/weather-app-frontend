@@ -1,52 +1,76 @@
-# weather-app-frontend
+# Weather App WEB
 
-This template should help get you started developing with Vue 3 in Vite.
+**[DEMO Weather App Web](https://jpalma-weather-app-frontend.herokuapp.com/login)** 
+**[DEMO Weather App API](https://jpalma-weather-app-frontend.herokuapp.com/)** 
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+## Technologies
+- Vue3
+- Vue Router
+- TypeScript
+- Pinia
+- Docker
+- Tailwind
+- Heroku
+- Axios
+- Auth0
+- Nginx
+- Vite
 
-## Type Support for `.vue` Imports in TS
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Env variable
+Create `.env` file based on `sample.env`.
+Fill up the correct configurations in `.env` file
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+```
+VITE_DOMAIN=
+VITE_CLIENT=
+VITE_REDIRECT=
+VITE_AUDIENCE=
+```
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## Project setup
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+### Compiles and hot-reloads for development
+```
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+### Compiles and minifies for production
+```
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+### Run your unit tests
+```
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+### Lints and fixes files
+```
 npm run lint
+```
+
+
+
+## Deploy to Heroku
+
+heroku create jpalma-weather-app-frontend
+
+heroku container:push web --app jpalma-weather-app-frfrontendontend
+
+heroku container:release web --app jpalma-weather-app-frontend
+
+heroku config:set VITE_DOMAIN=$VITE_DOMAIN VITE_CLIENT=$VITE_CLIENT VITE_REDIRECT=$VITE_REDIRECT VITE_AUDIENCE=$VITE_AUDIENCE --app <project-name
+
+Create heroku.yml
+```
+build:
+  docker:
+    web: Dockerfile
+
 ```
