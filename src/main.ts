@@ -11,6 +11,7 @@ app.use(
     domain: `${import.meta.env.VITE_DOMAIN}`,
     client_id: `${import.meta.env.VITE_CLIENT}`,
     redirect_uri: import.meta.env.VITE_REDIRECT,
+    audience: import.meta.env.VITE_AUDIENCE,
   })
 );
 
