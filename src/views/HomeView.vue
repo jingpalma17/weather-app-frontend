@@ -17,7 +17,7 @@
             <th>Humidity</th>
           </tr>
         </thead>
-         <tbody>
+        <tbody>
           <tr>
             <td>1</td>
             <td>2</td>
@@ -26,7 +26,7 @@
             <td>5</td>
             <td>6</td>
           </tr>
-         </tbody>
+        </tbody>
       </table>
       <button @click="goBack">Back</button>
     </div>
@@ -41,7 +41,7 @@ export default {
   setup() {
     const weatherStore = useWeatherStore();
     const state: any = reactive({
-      displayResult: false
+      displayResult: false,
     }); // TODO Fix typings
 
     const submit = async () => {
