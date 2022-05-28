@@ -27,7 +27,7 @@ export default {
 
     return {
       logout: () => {
-        logout({ returnTo: window.location.origin+ '/login' });
+        logout({ returnTo: window.location.origin + "/login" });
       },
     };
   },

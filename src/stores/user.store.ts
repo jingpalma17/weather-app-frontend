@@ -8,7 +8,7 @@ export const useUserStore = defineStore({
   id: "user",
   state: () => ({
     user: { ...defaultUserData },
-    token: undefined
+    token: undefined,
   }),
   getters: {
     getUser(): any {
@@ -28,6 +28,6 @@ export const useUserStore = defineStore({
     setToken(token: any) {
       // TODO Fix any
       this.token = token;
-    }
+    },
   },
 });
