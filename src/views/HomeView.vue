@@ -18,7 +18,7 @@
       </button>
     </div>
     <div v-else>
-      <table>
+      <table class="table-auto">
         <thead>
           <tr>
             <th>Date (mm/dd/yyyy)</th>
@@ -31,7 +31,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td>{{state.dateToday}}</td>
             <td>{{ state.weather.main.temp }}</td>
             <td>{{ state.weather.weather[0].description }}</td>
             <td>{{ state.weather.weather[0].main }}</td>
@@ -55,6 +55,7 @@ import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { useRoute, useRouter } from "vue-router";
+import { format } from 'date-fns';
 
 export default {
   name: "HomeView",
@@ -67,6 +68,7 @@ export default {
       displayResult: false,
       city: '',
       weather: computed(() => weatherStore.getWeather),
+      dateToday: format(new Date(), 'MM/dd/yyyy'),
     }); // TODO Fix typings
 
     const submit = async (city) => {
@@ -78,6 +80,7 @@ export default {
 
     const goBack = () => {
       state.displayResult = false;
+      state.city = "";
     };
 
     // onMounted(() => {
@@ -90,4 +93,6 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+
+</style>
