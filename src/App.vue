@@ -7,7 +7,7 @@
       width="125"
       height="125"
     />
-    <h3>Weather Forecast</h3>
+    <h3 class="text-3xl font-bold underline">Weather Forecast</h3>
 
     <div class="wrapper">
       <nav>
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style>
+/*
 @import "@/assets/base.css";
 
 #app {
@@ -129,5 +130,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+}*/
 </style>
