@@ -1,10 +1,15 @@
 <template>
-  <div class="home">
+  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6">
     <div v-if="!state.displayResult">
       <h3>{{user.name}}</h3>
       <p>{{user.email}}</p>
       <input name="city" type="text" placeholder="city" />
-      <button @click="submit">Display Weather</button>
+      <button
+        @click="submit"
+        class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
+      >
+        Display Weather
+      </button>
     </div>
     <div v-else>
       <table>
@@ -29,7 +34,12 @@
           </tr>
         </tbody>
       </table>
-      <button @click="goBack">Back</button>
+      <button
+        @click="goBack"
+        class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
+      >
+        Back
+      </button>
     </div>
   </div>
 </template>
