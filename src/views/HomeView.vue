@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div v-if="!state.displayResult">
-      <h3>My Name</h3>
+      <h3>{{user.name}}</h3>
+      <p>{{user.email}}</p>
       <input name="city" type="text" placeholder="city" />
       <button @click="submit">Display Weather</button>
     </div>
@@ -33,12 +34,16 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import { useWeatherStore } from "../stores/weather.store";
+import { useAuth0 } from '@auth0/auth0-vue';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
   name: "HomeView",
   setup() {
+    const { user, isAuthenticated } = useAuth0();
+    const router = useRouter();
     const weatherStore = useWeatherStore();
     const state: any = reactive({
       displayResult: false,
@@ -53,7 +58,13 @@ export default {
       state.displayResult = false;
     };
 
-    return { state, submit, goBack };
+    // onMounted(() => {
+    //   if (!isAuthenticated.value) {
+    //     router.push('/login');
+    //   }
+    // });
+
+    return { state, submit, goBack, user, isAuthenticated };
   },
 };
 </script>

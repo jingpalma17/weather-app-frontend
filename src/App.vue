@@ -11,7 +11,7 @@
 
     <div class="wrapper">
       <nav>
-        <a>Logout</a>
+        <a @click="logout">Logout</a>
       </nav>
     </div>
   </header>
@@ -27,7 +27,7 @@ export default {
 
     return {
       logout: () => {
-        logout({ returnTo: window.location.origin });
+        logout({ returnTo: window.location.origin+ '/login' });
       },
     };
   },
