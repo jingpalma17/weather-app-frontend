@@ -17,7 +17,10 @@ class WeatherService {
   }
 
   async getWeather(): Promise<any> {
-    return this.axios.get();
+    const response = await this.axios.get();
+    const { data } = response;
+
+    return data;
   }
 }
 export default WeatherService;
