@@ -7,7 +7,6 @@
       <button @click="submit">Display Weather</button>
     </div>
     <div v-else>
-    {{state.weather}}
       <table>
         <thead>
           <tr>
@@ -22,11 +21,11 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
+            <td>{{state.weather.main.temp}}</td>
+            <td>{{state.weather.weather[0].description}}</td>
+            <td>{{state.weather.weather[0].main}}</td>
+            <td>{{state.weather.main.pressure}}</td>
+            <td>{{state.weather.main.humidity}}</td>
           </tr>
         </tbody>
       </table>
@@ -35,7 +34,7 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, computed } from "vue";
 import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from '@auth0/auth0-vue';
@@ -50,7 +49,7 @@ export default {
     const userStore = useUserStore();
     const state: any = reactive({
       displayResult: false,
-      weather: weatherStore.getWeather,
+      weather: computed(() => weatherStore.getWeather),
     }); // TODO Fix typings
 
     const submit = async () => {
