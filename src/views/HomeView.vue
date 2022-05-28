@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h3>My Name</h3>
     <div v-if="!state.displayResult">
+      <h3>My Name</h3>
       <input name="city" type="text" placeholder="city" />
       <button @click="submit">Display Weather</button>
     </div>
