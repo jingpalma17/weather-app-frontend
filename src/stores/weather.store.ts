@@ -27,10 +27,10 @@ export const useWeatherStore = defineStore({
       // TODO Fix any
       this.weather = weather;
     },
-    async loadWeather(): Promise<any> {
-      const useUserStore1 = useUserStore();
-      const weatherService1 = new weatherService(axios, useUserStore1.getToken);
-      const weather = await weatherService1.getWeather();
+    async loadWeather(city: string): Promise<any> {
+      const userStore = useUserStore();
+      const weatherService1 = new weatherService(axios, userStore.getToken);
+      const weather = await weatherService1.getWeather(city);
       this.setWeather(weather);
     },
   },

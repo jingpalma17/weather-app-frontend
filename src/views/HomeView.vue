@@ -8,9 +8,10 @@
         type="text"
         class="peer border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-12"
         placeholder="City"
+        v-model="state.city"
       />
       <button
-        @click="submit"
+        @click="submit(state.city)"
         class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
       >
         Display Weather
@@ -64,14 +65,15 @@ export default {
     const userStore = useUserStore();
     const state: any = reactive({
       displayResult: false,
+      city: '',
       weather: computed(() => weatherStore.getWeather),
     }); // TODO Fix typings
 
-    const submit = async () => {
+    const submit = async (city) => {
       const token = await getAccessTokenSilently();
       userStore.setToken(token);
       state.displayResult = true;
-      await weatherStore.loadWeather();
+      await weatherStore.loadWeather(city);
     };
 
     const goBack = () => {

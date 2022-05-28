@@ -16,8 +16,8 @@ class WeatherService {
     });
   }
 
-  async getWeather(): Promise<any> {
-    const response = await this.axios.get();
+  async getWeather(city: string): Promise<any> {
+    const response = await this.axios.get(`${city}`);
     const { data } = response;
 
     return data;
