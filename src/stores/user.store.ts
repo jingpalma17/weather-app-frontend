@@ -1,14 +1,4 @@
 import { defineStore } from "pinia";
-import { reactive, watchEffect } from 'vue';
-
-const state = reactive<Auth0ClientStateInterface>({
-  loading: true,
-  isAuthenticated: false,
-  user: {},
-  popupOpen: false,
-  error: null,
-  accessToken: undefined,
-});
 
 const defaultUserData = {
   name: "",
