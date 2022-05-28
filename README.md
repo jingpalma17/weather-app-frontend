@@ -61,7 +61,7 @@ npm run lint
 
 heroku create jpalma-weather-app-frontend
 
-heroku container:push web --app jpalma-weather-app-frfrontendontend
+heroku container:push web --app jpalma-weather-app-frontendontend
 
 heroku container:release web --app jpalma-weather-app-frontend
 
