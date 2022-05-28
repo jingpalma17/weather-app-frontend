@@ -34,16 +34,19 @@
 </template>
 <script lang="ts">
 import { reactive } from "vue";
+import { useWeatherStore } from "../stores/weather.store";
 
 export default {
   name: "HomeView",
   setup() {
+    const weatherStore = useWeatherStore();
     const state: any = reactive({
       displayResult: false
     }); // TODO Fix typings
 
     const submit = async () => {
       state.displayResult = true;
+      await weatherStore.loadWeather();
     };
 
     const goBack = () => {
