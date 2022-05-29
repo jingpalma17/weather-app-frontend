@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 flex justify-center">
     <div v-if="!state.displayResult" class="flex flex-col items-center">
       <h3>{{ user.name }}</h3>
-      <p>{{ user.email }}</p>
+      <a :href="'https://github.com/'+user.nickname">https://github.com/{{user.nickname}}</a>
       <input
         name="city"
         type="text"
