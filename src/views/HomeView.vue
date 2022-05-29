@@ -18,6 +18,7 @@
       </button>
     </div>
     <div v-else>
+      <h3>Weather in {{ state.city }}</h3>
       <table class="table-auto w-full divide-y divide-gray-200">
         <thead class="bg-gray-100">
           <tr class="border-gray-400">
