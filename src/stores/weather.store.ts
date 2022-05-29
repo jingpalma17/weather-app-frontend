@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineStore } from "pinia";
 import weatherService from "../services/weather.service";
 import axios from "axios";
@@ -17,16 +18,17 @@ export const useWeatherStore = defineStore({
     weather: { ...defaultWeatherData },
   }),
   getters: {
+    // TODO Fix any
     getWeather(): any {
-      // TODO Fix any
       return this.weather;
     },
   },
   actions: {
+    // TODO Fix any
     setWeather(weather: any) {
-      // TODO Fix any
       this.weather = weather;
     },
+    // TODO Fix any
     async loadWeather(city: string): Promise<any> {
       const userStore = useUserStore();
       const weatherService1 = new weatherService(axios, userStore.getToken);

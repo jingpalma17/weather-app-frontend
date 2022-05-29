@@ -11,22 +11,22 @@ export const useUserStore = defineStore({
     token: undefined,
   }),
   getters: {
+    // TODO Fix any
     getUser(): any {
-      // TODO Fix any
       return this.user;
     },
+    // TODO Fix any
     getToken(): any {
-      // TODO Fix any
       return this.token;
     },
   },
   actions: {
+    // TODO Fix any
     setUser(user: any) {
-      // TODO Fix any
       this.user = user;
     },
+    // TODO Fix any
     setToken(token: any) {
-      // TODO Fix any
       this.token = token;
     },
   },

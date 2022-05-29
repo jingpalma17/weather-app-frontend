@@ -7,16 +7,18 @@ import router from "./router";
 import "./assets/tailwind.css";
 
 const app = createApp(App);
+
+app.use(router);
 app.use(
   createAuth0({
     domain: `${import.meta.env.VITE_DOMAIN}`,
     client_id: `${import.meta.env.VITE_CLIENT}`,
     redirect_uri: import.meta.env.VITE_REDIRECT,
     audience: import.meta.env.VITE_AUDIENCE,
+    cacheLocation: "localstorage",
   })
 );
 
 app.use(createPinia());
-app.use(router);
 
 app.mount("#app");

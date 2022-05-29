@@ -50,26 +50,25 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted, computed } from "vue";
+import { reactive, computed } from "vue";
 import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from "@auth0/auth0-vue";
-import { useRoute, useRouter } from "vue-router";
 import { format } from "date-fns";
 
 export default {
   name: "HomeView",
   setup() {
-    const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-    const router = useRouter();
+    const { user, getAccessTokenSilently } = useAuth0();
     const weatherStore = useWeatherStore();
     const userStore = useUserStore();
+    // TODO Fix typings
     const state: any = reactive({
       displayResult: false,
       city: "",
       weather: computed(() => weatherStore.getWeather),
       dateToday: format(new Date(), "MM/dd/yyyy"),
-    }); // TODO Fix typings
+    });
 
     const submit = async (city) => {
       const token = await getAccessTokenSilently();
@@ -83,13 +82,7 @@ export default {
       state.city = "";
     };
 
-    // onMounted(() => {
-    //   if (!isAuthenticated.value) {
-    //     router.push('/login');
-    //   }
-    // });
-
-    return { state, submit, goBack, user, isAuthenticated };
+    return { state, submit, goBack, user };
   },
 };
 </script>

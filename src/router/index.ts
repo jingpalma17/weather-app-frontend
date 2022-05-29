@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory, RouterView } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+import { authGuard } from "@auth0/auth0-vue";
 import LoginView from "../views/LoginView.vue";
 import HomeView from "../views/HomeView.vue";
-import { authGuard } from "@auth0/auth0-vue";
 import NotFoundPage from "../views/NotFoundPage.vue";
 
 const router = createRouter({
@@ -9,15 +9,8 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "root",
-      component: RouterView,
-      children: [
-        {
-          path: "/dashboard",
-          name: "home",
-          component: () => import('@/views/HomeView.vue'),
-        },
-      ],
+      name: "home",
+      component: () => import('@/views/HomeView.vue'),
       beforeEnter: authGuard,
     },
     {
