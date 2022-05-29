@@ -23,20 +23,20 @@
           <tr class="border-gray-400">
             <th class="border-2 text-left font-medium uppercase tracking-wider">Date (mm/dd/yyyy)</th>
             <th class="border-2 text-left font-medium uppercase tracking-wider">Temp(F)</th>
-            <th class="border-2 text-left font-medium uppercase tracking-wider">Description</th>
-            <th class="border-2 text-left font-medium uppercase tracking-wider">Main</th>
-            <th class="border-2 text-left font-medium uppercase tracking-wider">Pressure</th>
-            <th class="border-2 text-left font-medium uppercase tracking-wider">Humidity</th>
+            <th class="hidden md:table-cell border-2 text-left font-medium uppercase tracking-wider">Description</th>
+            <th class="hidden md:table-cell border-2 text-left font-medium uppercase tracking-wider">Main</th>
+            <th class="hidden md:table-cell border-2 text-left font-medium uppercase tracking-wider">Pressure</th>
+            <th class="hidden md:table-cell border-2 text-left font-medium uppercase tracking-wider">Humidity</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
           <tr class="border-gray-400">
             <td class="border-2">{{ state.dateToday }}</td>
             <td class="border-2">{{ state.weather.main.temp }}</td>
-            <td class="border-2">{{ state.weather.weather[0].description }}</td>
-            <td class="border-2">{{ state.weather.weather[0].main }}</td>
-            <td class="border-2">{{ state.weather.main.pressure }}</td>
-            <td class="border-2">{{ state.weather.main.humidity }}</td>
+            <td class="hidden md:table-cell border-2">{{ state.weather.weather[0].description }}</td>
+            <td class="hidden md:table-cell border-2">{{ state.weather.weather[0].main }}</td>
+            <td class="hidden md:table-cell border-2">{{ state.weather.main.pressure }}</td>
+            <td class="hidden md:table-cell border-2">{{ state.weather.main.humidity }}</td>
           </tr>
         </tbody>
       </table>
