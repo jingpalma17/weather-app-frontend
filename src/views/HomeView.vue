@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6">
-    <div v-if="!state.displayResult">
+  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 flex justify-center">
+    <div v-if="!state.displayResult" class="flex flex-col items-center">
       <h3>{{ user.name }}</h3>
       <p>{{ user.email }}</p>
       <input
@@ -8,7 +8,7 @@
         type="text"
         class="peer border border-gray-200 focus:outline-none rounded-md focus:border-gray-500 focus:shadow-sm w-full p-3 h-12"
         placeholder="City"
-        v-model="state.city"
+        v-model="state.city" 
       />
       <button
         @click="submit(state.city)"
@@ -18,31 +18,31 @@
       </button>
     </div>
     <div v-else>
-      <table class="table-auto">
-        <thead>
-          <tr>
-            <th>Date (mm/dd/yyyy)</th>
-            <th>Temp(F)</th>
-            <th>Description</th>
-            <th>Main</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
+      <table class="table-auto w-full divide-y divide-gray-200">
+        <thead class="bg-gray-100">
+          <tr class="border-gray-400">
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Date (mm/dd/yyyy)</th>
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Temp(F)</th>
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Description</th>
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Main</th>
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Pressure</th>
+            <th class="border-2 text-left font-medium uppercase tracking-wider">Humidity</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>{{ state.dateToday }}</td>
-            <td>{{ state.weather.main.temp }}</td>
-            <td>{{ state.weather.weather[0].description }}</td>
-            <td>{{ state.weather.weather[0].main }}</td>
-            <td>{{ state.weather.main.pressure }}</td>
-            <td>{{ state.weather.main.humidity }}</td>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr class="border-gray-400">
+            <td class="border-2">{{ state.dateToday }}</td>
+            <td class="border-2">{{ state.weather.main.temp }}</td>
+            <td class="border-2">{{ state.weather.weather[0].description }}</td>
+            <td class="border-2">{{ state.weather.weather[0].main }}</td>
+            <td class="border-2">{{ state.weather.main.pressure }}</td>
+            <td class="border-2">{{ state.weather.main.humidity }}</td>
           </tr>
         </tbody>
       </table>
       <button
         @click="goBack"
-        class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
+        class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none float-right"
       >
         Back
       </button>
