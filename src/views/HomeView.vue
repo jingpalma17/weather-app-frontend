@@ -91,7 +91,7 @@ import { format } from "date-fns";
 export default {
   name: "HomeView",
   setup() {
-    const { user, getAccessTokenSilently } = useAuth0();
+    const { user, getAccessTokenSilently, } = useAuth0();
     const weatherStore = useWeatherStore();
     const userStore = useUserStore();
     // TODO Fix typings
@@ -100,19 +100,24 @@ export default {
       city: "",
       weather: computed(() => weatherStore.getWeather),
       dateToday: format(new Date(), "MM/dd/yyyy"),
+      user: computed(() => user)
     });
 
-    const submit = async (city) => {
+    const submit = async (city: string) => {
       if (!city) {
         alert("Please enter city");
         return;
       }
+
+      // TODO Move to proper place
       const token = await getAccessTokenSilently();
       userStore.setToken(token);
+
       try {
         await weatherStore.loadWeather(city);
       } catch (err) {
         alert("Something went wrong. Please try again");
+        state.city = "";
         return;
       }
 
