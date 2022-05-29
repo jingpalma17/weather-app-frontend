@@ -12,6 +12,7 @@
         placeholder="City"
         v-model="state.city"
       />
+      <h3>Country: Phillippines</h3>
       <button
         @click="submit(state.city)"
         class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
@@ -19,8 +20,8 @@
         Display Weather
       </button>
     </div>
-    <div v-else>
-      <h3>Weather in {{ state.city }}</h3>
+    <div v-else class="w-full">
+      <h3>Weather in {{ state.city }}, Phillippines</h3>
       <table class="table-auto w-full divide-y divide-gray-200">
         <thead class="bg-gray-100">
           <tr class="border-gray-400">
