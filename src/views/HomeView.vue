@@ -56,7 +56,7 @@
         <tbody class="bg-white divide-y divide-gray-200">
           <tr class="border-gray-400">
             <td class="border-2">{{ state.dateToday }}</td>
-            <td class="border-2">{{ state.weather.main.temp }}</td>
+            <td class="border-2">{{ round(state.weather.main.temp) }}</td>
             <td class="hidden md:table-cell border-2">
               {{ state.weather.weather[0].description }}
             </td>
@@ -87,6 +87,7 @@ import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { format } from "date-fns";
+import { round } from 'lodash';
 
 export default {
   name: "HomeView",
@@ -129,7 +130,7 @@ export default {
       state.city = "";
     };
 
-    return { state, submit, goBack, user };
+    return { state, submit, goBack, user, round };
   },
 };
 </script>
