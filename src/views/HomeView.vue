@@ -16,9 +16,11 @@
       <button
         @click="submit(state.city)"
         class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none"
+        v-if="!state.isSubmitting"
       >
         Display Weather
       </button>
+      <div v-else>loading..</div>
     </div>
     <div v-else class="w-full">
       <h3>Weather in {{ state.city }}, Phillippines</h3>
@@ -87,12 +89,12 @@ import { useWeatherStore } from "../stores/weather.store";
 import { useUserStore } from "../stores/user.store";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { format } from "date-fns";
-import { round } from 'lodash';
+import { round } from "lodash";
 
 export default {
   name: "HomeView",
   setup() {
-    const { user, getAccessTokenSilently, } = useAuth0();
+    const { user, getAccessTokenSilently } = useAuth0();
     const weatherStore = useWeatherStore();
     const userStore = useUserStore();
     // TODO Fix typings
@@ -101,7 +103,8 @@ export default {
       city: "",
       weather: computed(() => weatherStore.getWeather),
       dateToday: format(new Date(), "MM/dd/yyyy"),
-      user: computed(() => user)
+      user: computed(() => user),
+      isSubmitting: false,
     });
 
     const submit = async (city: string) => {
@@ -110,19 +113,22 @@ export default {
         return;
       }
 
-      // TODO Move to proper place
-      const token = await getAccessTokenSilently();
-      userStore.setToken(token);
-
+      state.isSubmitting = true;
       try {
+        // TODO Move to proper place
+        const token = await getAccessTokenSilently();
+        userStore.setToken(token);
+
         await weatherStore.loadWeather(city);
       } catch (err) {
         alert("Something went wrong. Please try again");
         state.city = "";
+        state.isSubmitting = false;
         return;
       }
 
       state.displayResult = true;
+      state.isSubmitting = false;
     };
 
     const goBack = () => {
